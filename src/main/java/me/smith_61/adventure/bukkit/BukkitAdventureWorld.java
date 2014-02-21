@@ -37,7 +37,10 @@ public class BukkitAdventureWorld {
 		
 		ZipEntry entry = zipFile.getEntry("maps/" + name + ".zip");
 		if(entry == null) {
-			throw new AdventureLoadException("Missing world zip file: maps/" + name + ".zip");
+			entry = zipFile.getEntry("/maps/" + name + ".zip");
+			if(entry == null) {
+				throw new AdventureLoadException("Missing world zip file: 'maps/" + name + ".zip'");
+			}
 		}
 		
 		return new BukkitAdventureWorld(name, zipFile, entry);

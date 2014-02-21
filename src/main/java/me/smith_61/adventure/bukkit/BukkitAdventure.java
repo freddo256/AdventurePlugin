@@ -78,7 +78,10 @@ public class BukkitAdventure extends Adventure {
 			
 			ZipEntry adventureDescFile = zipFile.getEntry("adventure.yaml");
 			if(adventureDescFile == null || adventureDescFile.isDirectory()) {
-				throw new AdventureLoadException(file.getName() + " is missing required adventure.yaml file");
+				adventureDescFile = zipFile.getEntry("./adventure.yaml");
+				if(adventureDescFile == null){
+					throw new AdventureLoadException(file.getName() + " is missing required 'adventure.yaml' file");
+				}
 			}
 			
 			InputStream in = null;
