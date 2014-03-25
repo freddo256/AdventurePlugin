@@ -2,6 +2,10 @@ package me.smith_61.adventure.common;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import com.google.common.io.Files;
 
@@ -34,6 +38,17 @@ public class Utils {
 				
 				Utils.copyTo(child, toChild);
 			}
+		}
+	}
+	
+	public static void dumpZipContents(ZipFile file) {
+		AdventureLogger.logf(Level.FINEST, "Dumping contents of ZipFile: %s.", file.getName());
+		
+		Enumeration<? extends ZipEntry> contents = file.entries();
+		while(contents.hasMoreElements()) {
+			ZipEntry entry = contents.nextElement();
+			
+			AdventureLogger.logf(Level.FINEST, "\tFound file: %s.", entry);
 		}
 	}
 }

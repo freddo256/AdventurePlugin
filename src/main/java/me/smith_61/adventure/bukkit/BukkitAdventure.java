@@ -31,6 +31,7 @@ import me.smith_61.adventure.bukkit.tasks.LoadWorld;
 import me.smith_61.adventure.common.Adventure;
 import me.smith_61.adventure.common.AdventureInstance;
 import me.smith_61.adventure.common.AdventureTeam;
+import me.smith_61.adventure.common.Utils;
 
 public class BukkitAdventure extends Adventure {
 	
@@ -75,6 +76,7 @@ public class BukkitAdventure extends Adventure {
 	public static BukkitAdventure loadAdventure(File file) throws AdventureLoadException {
 		try {
 			ZipFile zipFile = new ZipFile(file);
+			Utils.dumpZipContents(zipFile);
 			
 			ZipEntry adventureDescFile = zipFile.getEntry("adventure.yaml");
 			if(adventureDescFile == null || adventureDescFile.isDirectory()) {
