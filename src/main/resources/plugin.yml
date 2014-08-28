@@ -3,7 +3,7 @@ name: ${project.name}
 author: smith_61
 description: A plugin that manages the creation and playing of adventure type maps
 
-main: me.smith_61.adventure.bukkit.BukkitPlugin
+main: me.smith_61.adventure.BukkitPlugin
 
 commands:
     adventure:
